@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://oficina.dev/schemas/saga/pagamento-aprovado.schema.json",
+  "title": "PagamentoAprovadoEvent",
+  "allOf": [{ "$ref": "envelope.schema.json" }],
+  "properties": {
+    "eventType": { "const": "PagamentoAprovadoEvent" },
+    "payload": {
+      "type": "object",
+      "required": ["ordemServicoId", "pagamentoId", "mercadoPagoPaymentId", "valorPago", "aprovadoEm"],
+      "properties": {
+        "ordemServicoId": { "type": "string" },
+        "pagamentoId": { "type": "string" },
+        "mercadoPagoPaymentId": { "type": "string" },
+        "valorPago": { "type": "number", "minimum": 0 },
+        "aprovadoEm": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

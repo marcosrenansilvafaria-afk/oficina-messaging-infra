@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://oficina.dev/schemas/saga/execucao-iniciada.schema.json",
+  "title": "ExecucaoIniciadaEvent",
+  "allOf": [{ "$ref": "envelope.schema.json" }],
+  "properties": {
+    "eventType": { "const": "ExecucaoIniciadaEvent" },
+    "payload": {
+      "type": "object",
+      "required": ["ordemServicoId", "execucaoId", "iniciadaEm"],
+      "properties": {
+        "ordemServicoId": { "type": "string" },
+        "execucaoId": { "type": "string" },
+        "iniciadaEm": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

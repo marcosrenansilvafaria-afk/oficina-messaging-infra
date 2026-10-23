@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://oficina.dev/schemas/saga/compensar-os.schema.json",
+  "title": "CompensarOSEvent",
+  "allOf": [{ "$ref": "envelope.schema.json" }],
+  "properties": {
+    "eventType": { "const": "CompensarOSEvent" },
+    "payload": {
+      "type": "object",
+      "required": ["ordemServicoId", "origemFalha", "motivo", "compensarEm"],
+      "properties": {
+        "ordemServicoId": { "type": "string" },
+        "origemFalha": { "enum": ["PAGAMENTO", "EXECUCAO"] },
+        "motivo": { "type": "string" },
+        "compensarEm": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# Copie para terraform.tfvars para uso local (NUNCA comite terraform.tfvars).
+# Nenhuma variavel deste repositorio e sensivel - nao ha segredos aqui, so
+# nomes/configuracao do broker.
+
+aws_region      = "us-east-1"
+environment     = "development"
+saga_topic_name = "oficina-saga-events"

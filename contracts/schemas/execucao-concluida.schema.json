@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://oficina.dev/schemas/saga/execucao-concluida.schema.json",
+  "title": "ExecucaoConcluidaEvent",
+  "allOf": [{ "$ref": "envelope.schema.json" }],
+  "properties": {
+    "eventType": { "const": "ExecucaoConcluidaEvent" },
+    "payload": {
+      "type": "object",
+      "required": ["ordemServicoId", "execucaoId", "concluidaEm"],
+      "properties": {
+        "ordemServicoId": { "type": "string" },
+        "execucaoId": { "type": "string" },
+        "concluidaEm": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

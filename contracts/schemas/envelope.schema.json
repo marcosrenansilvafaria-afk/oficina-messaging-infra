@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://oficina.dev/schemas/saga/envelope.schema.json",
+  "title": "SagaEventEnvelope",
+  "description": "Envelope comum a todos os eventos do Saga publicados em oficina-saga-events.fifo.",
+  "type": "object",
+  "required": ["eventId", "eventType", "eventVersion", "occurredAt", "correlationId", "payload"],
+  "properties": {
+    "eventId": { "type": "string", "format": "uuid" },
+    "eventType": { "type": "string" },
+    "eventVersion": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" },
+    "occurredAt": { "type": "string", "format": "date-time" },
+    "correlationId": { "type": "string" },
+    "payload": { "type": "object" }
+  },
+  "additionalProperties": false
+}
