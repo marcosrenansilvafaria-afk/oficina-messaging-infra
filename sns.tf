@@ -17,23 +17,8 @@ resource "aws_sns_topic" "saga_events" {
   }
 }
 
-# Policy do topico: so o proprio dono da conta (via IAM, nao resource policy
-# publica) pode publicar. Nenhum principal externo/anonimo tem acesso.
-resource "aws_sns_topic_policy" "saga_events" {
-  arn = aws_sns_topic.saga_events.arn
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Sid       = "AccountOwnerFullAccess"
-        Effect    = "Allow"
-        Principal = { AWS = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root" }
-        Action    = "sns:*"
-        Resource  = aws_sns_topic.saga_events.arn
-      }
-    ]
-  })
-}
-
-data "aws_caller_identity" "current" {}
+# Nenhuma resource policy publica/cross-account e definida no topico - o
+# controle de acesso real e feito via IAM identity-based policy (iam.tf),
+# que so concede `sns:Publish` para cada servico consumidor. Sem uma policy
+# de recurso explicita, o SNS usa a policy default (restrita ao dono da
+# conta via IAM), suficiente aqui.

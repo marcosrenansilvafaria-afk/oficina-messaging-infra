@@ -15,6 +15,7 @@ terraform.rc
 *.tfvars
 !terraform.tfvars.example
 *.tfplan
+*.plan
 
 # Contratos (Node, se algum tooling de validação de schema for adicionado depois)
 node_modules/
