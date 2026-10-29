@@ -10,7 +10,8 @@
 resource "aws_sns_topic" "saga_events" {
   name                        = "${var.saga_topic_name}.fifo"
   fifo_topic                  = true
-  content_based_deduplication = false # dedupe explicito via MessageDeduplicationId = eventId (ver contracts/)
+  content_based_deduplication = false           # dedupe explicito via MessageDeduplicationId = eventId (ver contracts/)
+  kms_master_key_id           = "alias/aws/sns" # SSE com a chave gerenciada pela AWS (sem custo mensal de CMK)
 
   tags = {
     Name = "${var.saga_topic_name}.fifo"

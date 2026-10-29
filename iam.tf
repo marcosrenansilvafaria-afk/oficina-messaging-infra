@@ -20,6 +20,20 @@ resource "aws_iam_policy" "consumer" {
         Resource = aws_sns_topic.saga_events.arn
       },
       {
+        Sid    = "UseSagaTopicKmsKey"
+        Effect = "Allow"
+        Action = [
+          "kms:GenerateDataKey",
+          "kms:Decrypt",
+        ]
+        Resource = "arn:aws:kms:${var.aws_region}:${data.aws_caller_identity.current.account_id}:key/*"
+        Condition = {
+          StringEquals = {
+            "kms:ViaService" = "sns.${var.aws_region}.amazonaws.com"
+          }
+        }
+      },
+      {
         Sid    = "ConsumeOwnQueue"
         Effect = "Allow"
         Action = [
