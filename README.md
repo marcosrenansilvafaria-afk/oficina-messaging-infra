@@ -2,17 +2,18 @@
 
 Infraestrutura como código (Terraform) para o broker de mensageria
 assíncrona (**AWS SNS + SQS FIFO**) que conecta os microsserviços da Fase 4
-do projeto **oficina** via Saga Pattern coreografado. Este é o
-**Repositório 5**, criado na Sprint 1 da Fase 4, somando-se aos 4
-repositórios da Fase 3:
+do projeto **oficina** via Saga Pattern coreografado.
 
 | # | Repositório | Responsabilidade |
 |---|---|---|
-| 1 | oficina-db-infrastructure | Banco de dados gerenciado (RDS PostgreSQL) |
-| 2 | oficina-lambda-auth | Lambda de autenticação por CPF + API Gateway |
-| 3 | oficina-k8s-infrastructure | Cluster Kubernetes gerenciado (EKS) |
-| 4 | oficina-app | Aplicação NestJS + observabilidade |
-| 5 | **oficina-messaging-infra** (este) | Broker SNS/SQS do Saga + contratos de evento |
+| 1 | [oficina-db-infrastructure](https://github.com/marcosrenansilvafaria-afk/oficina-db-infrastructure) | RDS PostgreSQL (compartilhada, 1 database por microsserviço) |
+| 2 | [oficina-lambda-auth](https://github.com/marcosrenansilvafaria-afk/oficina-lambda-auth) | Autenticação por CPF + JWT (Lambda + API Gateway) |
+| 3 | [oficina-k8s-infrastructure](https://github.com/marcosrenansilvafaria-afk/oficina-k8s-infrastructure) | Cluster EKS compartilhado |
+| 4 | [oficina-app](https://github.com/marcosrenansilvafaria-afk/oficina-app) | Hub de documentação, dashboards de observabilidade, Saga E2E |
+| 5 | **oficina-messaging-infra** (este) | Broker SNS/SQS FIFO + contratos de evento do Saga |
+| 6 | [oficina-os-service](https://github.com/marcosrenansilvafaria-afk/oficina-os-service) | Microsserviço de Ordem de Serviço |
+| 7 | [oficina-billing-service](https://github.com/marcosrenansilvafaria-afk/oficina-billing-service) | Microsserviço de orçamento/pagamento |
+| 8 | [oficina-execution-service](https://github.com/marcosrenansilvafaria-afk/oficina-execution-service) | Microsserviço de fila de produção/execução |
 
 ## Sumário
 
